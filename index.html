@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С днём рождения, Саида Икрамовна!</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: #090909;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .page {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(212, 175, 55, 0.12);
+            filter: blur(100px);
+            border-radius: 50%;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .content {
+            max-width: 1100px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .photo-box {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .photo-frame {
+            width: 360px;
+            height: 460px;
+            border: 1px solid rgba(212, 175, 55, 0.7);
+            padding: 12px;
+            transform: rotate(-2deg);
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.12);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .number {
+            position: absolute;
+            bottom: -45px;
+            right: 20px;
+            font-size: 100px;
+            font-weight: bold;
+            color: rgba(212, 175, 55, 0.12);
+        }
+
+        .small-title {
+            color: #d4af37;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(45px, 6vw, 82px);
+            line-height: 0.95;
+            margin-bottom: 25px;
+        }
+
+        h1 span {
+            color: #d4af37;
+        }
+
+        .subtitle {
+            color: #cfcfcf;
+            font-size: 20px;
+            line-height: 1.7;
+            max-width: 650px;
+            margin-bottom: 30px;
+        }
+
+        .quote {
+            border-left: 3px solid #d4af37;
+            padding-left: 20px;
+            color: #e5e5e5;
+            font-size: 18px;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .section {
+            position: relative;
+            z-index: 2;
+            padding: 100px 20px;
+            background: #0d0d0d;
+        }
+
+        .section-inner {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 60px;
+        }
+
+        .section-title span {
+            color: #d4af37;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            padding: 35px 25px;
+            background: #151515;
+            border: 1px solid rgba(212, 175, 55, 0.18);
+            border-radius: 18px;
+            text-align: center;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212, 175, 55, 0.7);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .icon {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            color: #d4af37;
+            font-size: 23px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #bdbdbd;
+            line-height: 1.7;
+        }
+
+        .math {
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .formula {
+            color: rgba(212, 175, 55, 0.35);
+            font-size: 30px;
+            margin-bottom: 30px;
+            letter-spacing: 10px;
+        }
+
+        .math h2 {
+            font-size: 45px;
+            margin-bottom: 25px;
+        }
+
+        .math p {
+            max-width: 700px;
+            margin: auto;
+            color: #bdbdbd;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .wish {
+            padding: 110px 20px;
+            text-align: center;
+            background: linear-gradient(
+                180deg,
+                #0d0d0d,
+                #17130a
+            );
+            position: relative;
+            z-index: 2;
+        }
+
+        .wish h2 {
+            font-size: clamp(40px, 5vw, 65px);
+            color: #d4af37;
+            margin-bottom: 30px;
+        }
+
+        .wish p {
+            max-width: 750px;
+            margin: auto;
+            font-size: 20px;
+            line-height: 1.9;
+            color: #dedede;
+        }
+
+        .cake {
+            font-size: 70px;
+            margin-bottom: 25px;
+        }
+
+        footer {
+            padding: 30px;
+            text-align: center;
+            color: #777;
+            background: #090909;
+            position: relative;
+            z-index: 2;
+        }
+
+        .sparkle {
+            position: absolute;
+            color: #d4af37;
+            opacity: 0.5;
+            animation: float 4s infinite ease-in-out;
+        }
+
+        .s1 {
+            top: 15%;
+            left: 8%;
+        }
+
+        .s2 {
+            top: 30%;
+            right: 10%;
+            animation-delay: 1s;
+        }
+
+        .s3 {
+            bottom: 20%;
+            left: 15%;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @media (max-width: 800px) {
+            .content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .photo-frame {
+                width: 280px;
+                height: 360px;
+            }
+
+            .quote {
+                text-align: left;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .number {
+                right: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <div class="glow"></div>
+
+    <div class="sparkle s1">✦</div>
+    <div class="sparkle s2">✧</div>
+    <div class="sparkle s3">✦</div>
+
+    <section class="hero">
+
+        <div class="content">
+
+            <div class="photo-box">
+
+                <div class="photo-frame">
+                    <img src="saida.jpg" alt="Саида Икрамовна">
+                </div>
+
+                <div class="number">60</div>
+
+            </div>
+
+            <div>
+
+                <div class="small-title">
+                    С днём рождения
+                </div>
+
+                <h1>
+                    Саида<br>
+                    <span>Икрамовна</span>
+                </h1>
+
+                <p class="subtitle">
+                    50 лет — это не просто дата.
+                    Это годы мудрости, доброты, опыта
+                    и множества людей, которым Вы помогли
+                    найти свою дорогу.
+                </p>
+
+                <div class="quote">
+                    «Иногда судьба меняет наши планы,
+                    но именно благодаря этому мы оказываемся
+                    там, где действительно нужны другим людям».
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<section class="section">
+
+    <div class="section-inner">
+
+        <h2 class="section-title">
+            Какая Вы для нас <span>♥</span>
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="icon">🌷</div>
+
+                <h3>Добрая</h3>
+
+                <p>
+                    Ваша доброта чувствуется даже
+                    в самых обычных словах и поступках.
+                    Вы умеете поддержать и подарить
+                    человеку уверенность.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">📐</div>
+
+                <h3>Учитель математики</h3>
+
+                <p>
+                    Вы учите нас не только формулам,
+                    числам и задачам, но и терпению,
+                    внимательности и умению искать
+                    правильное решение.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">✨</div>
+
+                <h3>Особенная</h3>
+
+                <p>
+                    У каждого человека есть своя аура.
+                    Ваша фиолетовая и наполнена теплом, спокойствием,
+                    добротой и светом.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="math">
+
+    <div class="formula">
+        ∞ + ∞ = ∞
+    </div>
+
+    <h2>
+        Формула хорошего учителя
+    </h2>
+
+    <p>
+        Знания + терпение + доброта + мудрость =
+        человек, который навсегда остаётся
+        в памяти своих учеников.
+        Именно такой формулой хочется описать Вас,
+        Саида Икрамовна.
+    </p>
+
+</section>
+
+
+<section class="wish">
+
+    <div class="cake">
+        🎂
+    </div>
+
+    <h2>
+        С 50-летием!
+    </h2>
+
+    <p>
+        Саида Икрамовна, желаем Вам крепкого здоровья,
+        семейного счастья, благополучия, душевного спокойствия
+        и как можно больше поводов улыбаться.
+
+        <br><br>
+
+        Пусть каждый новый день приносит радость,
+        пусть рядом всегда будут дорогие люди,
+        а все Ваши мечты находят дорогу к исполнению.
+
+        <br><br>
+
+        И пусть жизнь продолжает доказывать,
+        что судьба иногда выбирает для нас путь,
+        который оказывается намного прекраснее
+        первоначального плана.
+
+        <br><br>
+
+        <strong>
+            С юбилеем, Саида Икрамовна! ❤️
+        </strong>
+    </p>
+
+</section>
+
+
+<footer>
+    С любовью и уважением от Мухаммада Ризо
+     ♥
+</footer>
+
+</body>
+</html>
